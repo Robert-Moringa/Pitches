@@ -1,5 +1,6 @@
 from flask import render_template, redirect, url_for,abort,request
 from . import main
+from .. import db
 from ..models import User,Pitch,Comment,Upvote,Downvote
 from flask_login import login_required, current_user
 from .form import UpdateProfile,PitchForm,CommentForm
@@ -33,3 +34,17 @@ def profile(uname):
         abort(404)
 
     return render_template("profile/profile.html", user = user)
+
+
+@main.route('/user/<name>/updateprofile', methods = ['POST','GET'])
+@login_required
+def updateprofile(name):
+    form = UpdateProfile()
+    user = User.query.filter_by(username = name).first()
+    if user == None:
+        abort(404)
+    if form.validate_on_submit():
+        user.bio = form.bio.data
+        user.save_u()
+        return redirect(url_for('.profile',name = name))
+    return render_template('profile/update.html',form =form)

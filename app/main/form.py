@@ -3,8 +3,8 @@ from wtforms import StringField, SelectField, TextAreaField, SubmitField
 from wtforms.validators import Required
 
 class UpdateProfile(FlaskForm):
-    bio = TextAreaField('Write a brief bio about you.',validators = [Required()])
-    submit = SubmitField('Save')
+    bio = TextAreaField('Tell us about you.',validators = [Required()])
+    submit = SubmitField('Submit')
 
 class PitchForm(FlaskForm):
     title = StringField('Title', validators=[Required()])
