@@ -1,9 +1,10 @@
 import os
 
+
 class Config:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:1234@localhost/pitches'
     SQLALCHEMY_TRACK_MODIFICATIONS=True
-    SECRET_KEY=os.environ.get('SECRET_KEY')
+    SECRET_KEY=os.urandom(32)
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 465
