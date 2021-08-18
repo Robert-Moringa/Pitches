@@ -1,5 +1,35 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<h1>Peaches of Arijojo</h1>
+
+<!-- pitches categories -->
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Business Pitches</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Leadership Pitches</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Environmental Pitches</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Entartainment Pitches</a>
+        </li>
+      </ul>
+</div>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+        <h4 class="picth-title">Business Marketing</h4>
+        <p class="pitch-category"><i>Category: <strong>Business</strong></i></p>
+        <hr>
+        <p class="pitch-post">"There’s a better way to grow. Myners Developers offers marketing, sales, service, and operations software that helps your business grow without compromise. Because ‘good for the business’ should also mean ‘good for the customer."</p>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-2"></div>
+</div>
+
 {% endblock %}

@@ -27,10 +27,10 @@ class User(UserMixin, db.Model):
 
     @set_password.setter
     def password(self, password):
-        self.secure_password = generate_password_hash(password)
+        self.user_password = generate_password_hash(password)
 
     def verify_password(self, password):
-        return check_password_hash(self.secure_password,password) 
+        return check_password_hash(self.user_password,password) 
 
 
 class Pitch(db.Model):
