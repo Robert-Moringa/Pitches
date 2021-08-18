@@ -2,16 +2,14 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block content %}
-    <div class="container" id="allcomments" >
+    <div class="container" id="thecomments" >
         <div class="row">
 
             {% if all_comments %}
                 <div class="col-md-7" >
-                    <h3 class="text-center" id="coms">All comments for the post</h3>
-                
-                   </div>
+                    <h3 class="text-center" id="coms">The comments for the pitch</h3>
+                    
                    <div class="col-md-5  commentform" >
-                       <h4>Add a new comment.</h4>
 
                         {{wtf.quick_form(form)}}
                    </div>
@@ -19,7 +17,7 @@
             {%else%}
             <div class="card w-90 mb-3">
                 <div class="card-body">
-                  <p class="card-title">There are no comments for this pitch. Have the honor to be the first to comment.</p>
+                  <p class="card-title">No Comments for this yet for this post. Be the first to comment</p>
                 </div>
             </div> 
             <div class="col-md-5">
