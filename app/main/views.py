@@ -11,6 +11,20 @@ def index():
     title= 'Welcome to your one stop Pitches Website'
     return render_template('index.html', title = title)
 
+@main.route('/add_pitch', methods = ['POST','GET'])
+def new_pitch():
+    form = PitchForm()
+    if form.validate_on_submit():
+        title = form.title.data
+        post = form.post.data
+        category = form.category.data
+        user_id = 1
+        new_pitch_object = Pitch(post=post,user_id=current_user._get_current_object().id,category=category,title=title)
+        new_pitch_object.save_p()
+        return redirect(url_for('main.index'))
+        
+    return render_template('add_pitch.html', form = form)
+
 @main.route('/comment/<int:pitch_id>', methods = ['POST','GET'])
 @login_required
 def comment(pitch_id):
