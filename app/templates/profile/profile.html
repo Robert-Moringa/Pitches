@@ -9,9 +9,9 @@
     <div class="card testimonial-card">
         <div class="card-img"  >
                 {% if user.profile_pic_path %}
-                <img src="{{url_for('static',filename=user.profile_pic_path)}}" style="height:300px;border-radius: 1%" class="card-img"  alt="woman avatar">            
+                <img src="{{url_for('static',filename=user.profile_pic_path)}}" style="height:250px;border-radius: 50%" class="card-img"  alt="profile pic here">            
                 {%else%}
-                <p>No profile picture</p>
+                <p>You have not added a profile picture</p>
             
                 {% endif %}  
         </div>
@@ -19,24 +19,27 @@
         <div class="card-body">
             <h5 class="text-center"> {{user.username| capitalize}}</h5>
             <hr>
+
             {% if user.bio %}
                 <p><i class="fas fa-quote-left"></i> {{user.bio}}</p>
             {%else%}
             <p>It is unfortunate that {{user.username| capitalize}} has not added no bio yet</p>
             {% endif %}
+
             {% if user == current_user %}
             <div class="profpic">
-                <div id="updates">
-                  <a href="{{url_for('main.updateprofile',name=user.username)}}">Edit Bio</a>
-                  <button class="btn btn-sm btn-info" id="profbutton">update pic</button>
+                <div class="column" id="updates">
+                  <a href="{{url_for('main.updateprofile',name=user.username)}}">Edit your Bio</a>
                 </div>
                 
                 <div id="imgform">
                     <form  action="{{url_for('main.update_profile_pic',name=user.username)}}" method="post" enctype = "multipart/form-data">
+                      <button class="mynav" id="profbutton">Update profile picture</button>
                       <input type="file"  name="photo" class="form-control" required>
-                      <input type="submit" class="btn btn-sm btn-info" id="submit">
+                      <input type="submit" class="mynav" id="submit">
                     </form>
                 </div>
+
             </div>
             {% endif %}
         </div>

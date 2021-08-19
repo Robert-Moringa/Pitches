@@ -31,3 +31,39 @@ button{
 .category-tab{
     color: black;
 }
+
+/* macros.html */
+.pitch-title{
+    font-weight: bolder;
+}
+
+.pitch-post{
+    font-weight: 400;
+}
+
+.pitch-category{
+    font-weight: 200;
+    font-size: 80%;
+}
+
+.engaging-icons{
+    display: flex;
+}
+
+.icons{
+    padding-right: 50px; padding-left: 4px;
+    /* border-right: 1px solid rgba(0, 102, 0, 0.5); */
+    display: flex;
+    align-items: center;
+}
+
+.pitch{
+    border-bottom: 1px solid rgba(0, 102, 0, 0.3);
+    padding-bottom: 10px; padding-top: 10px;
+}
+
+.mynav{
+    background-color: rgba(0, 102, 0, 1);
+    margin-bottom: 10px;
+    color: white;
+}

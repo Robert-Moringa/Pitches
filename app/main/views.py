@@ -11,7 +11,7 @@ def index():
     pitches = Pitch.query.all()
     business = Pitch.query.filter_by(category = 'Business').all() 
     leadership = Pitch.query.filter_by(category = 'Leadership').all()
-    environment = Pitch.query.filter_by(category = 'Environmental').all()
+    environment = Pitch.query.filter_by(category = 'Environment').all()
     title= 'Welcome to your one stop Pitches Website'
     return render_template('index.html', title = title, pitches= pitches, business = business, leadership=leadership, environment=environment)
 
