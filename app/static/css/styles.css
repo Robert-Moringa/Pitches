@@ -1,4 +1,33 @@
-.mynav{
-    background-color: rgb(33,41,92);
+*{
+    font-family: 'Bubblegum Sans', cursive;
+}
+
+/* navbar.html */
+.myner{
+    font-family: 'Boogaloo', cursive;
+}
+ .thenav{
+     border-bottom: 2px solid rgba(0, 102, 0, 0.7);
+     padding-bottom: 10px;
+ }
+
+button{
     color: white;
+    background-color: rgba(0, 102, 0, 1);
+    border: none;
+    border-radius: 5px;
+}
+
+.mright>span{
+    margin-left: 10px;
+}
+
+
+/* index.html */
+.index{
+    margin-top: 10px;
+}
+
+.category-tab{
+    color: black;
 }

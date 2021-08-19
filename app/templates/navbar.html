@@ -1,29 +1,22 @@
-<div class="navbar navbar-inverse" role="navigation">
-    <div class="container-fluid mynav">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/"> Pitches </a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
-        </div>
 
-        <ul class="nav navbar-nav navbar-right">
-            {% if current_user.is_authenticated %}
-            <i class="fas fa-user"></i>&nbsp;<strong>{{current_user.username}}</strong> </a>
-            
-            <li><a href="{{url_for('main.profile', name=current_user.username)}}">My Profile</a></li>
-            <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
-            {% else %}
-            <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
-            {%endif%}
-          </ul>
+<header>
+    <div class="container thenav">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 row">
+            <h3 class="myner"><span style="color: black;">Myn</span><span style="color: rgba(188, 0, 0, 1);">erPit</span><span style="color: rgba(0, 102, 0, 1);">ches</span></h3>
 
+            <span class="navbar-collapse collapse mright navbar-right">
+                <span><a href="/" style="color: rgba(0, 102, 0, 1);">Home</a></span>
+                {% if current_user.is_authenticated %}
+                <span ><i class="fas fa-user"></i>&nbsp;<strong>{{current_user.username}}</strong></span>
+                <span><a style="color: rgba(0, 0, 0, 0.7);" href="{{url_for('main.profile', name=current_user.username)}}">My Profile</a></span>
+                <span><a href="{{url_for('auth.logout')}}"><button>Sign out</button></a></span>
+                {% else %}
+                <span><a href="{{url_for('auth.login')}}"><button>Sign in</button></a></span>
+                {%endif%}
+            </span>
+
+        </div>
+        <div class="col-md-2"></div>
     </div>
-</div>
+</header>

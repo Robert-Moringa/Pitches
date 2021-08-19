@@ -3,62 +3,49 @@
 
 {% block content %}
 
-<!-- pitches categories -->
-<div class="container">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#general">Pitches</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#leadership">Leadership Pitches</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#environment">Environmental Pitches</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#business">Business Pitches</a>
-        </li>
-      </ul>
-</div>
+<div class="index">
+  <div class="col-md-2"></div>
 
+  <div class="col-md-8">
 
-<div class="tab-content">
-  <div  class="container tab-pane active" id="general"><br>
-      {{ macro.display(pitches) }}
-  </div>
-  <div  class="container tab-pane fade" id="leadership"><br>
-      {{ macro.display(leadership)}}
-  </div>
-  <div  class="container tab-pane fade" id="environment"><br>
-      {{ macro.display(environment) }}
-  </div>
-  <div  class="container tab-pane fade" id="business"><br>
-      {{ macro.display(business) }}
-      
-  </div>
-</div>
-</div>
+    <!-- pitches categories -->
 
-<div class="row">
-    <div class="col-md-2" style="display: flex; justify-content: center;">
-        <button class="mynav"><a style="color: white;" href="{{url_for('main.new_pitch')}}">Create a Pitch</a><button>
+    <div class="container">
+      <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active category-tab" data-toggle="tab" href="#general">Pitches</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link category-tab" data-toggle="tab" href="#leadership">Leadership Pitches</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link category-tab" data-toggle="tab" href="#environment">Environmental Pitches</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link category-tab" data-toggle="tab" href="#business">Business Pitches</a>
+          </li>
+        </ul>
     </div>
-    <div class="col-md-4">
-        <h4 class="picth-title">Business Marketing</h4>
-        <p class="pitch-category"><i>Category: <strong>Business</strong></i></p>
-        <hr>
-        <p class="pitch-post">"There’s a better way to grow. Myners Developers offers marketing, sales, service, and operations software that helps your business grow without compromise. Because ‘good for the business’ should also mean ‘good for the customer."</p>
-        <div><span class="foot" > Comments</span> 
-            <span class="foot" > <a href=""><i class="fa fa-thumbs-up" style="font-size:18px;color: green"></i></a> 0 </span>
-            
-            
-            <span class="foot"> <a href=""> <i class="fa fa-thumbs-down" style="color:red;"></i> 1 </a></span></div>
 
-        <a href="" class="btn btn-info mynav"> Comment</a>
+    <div class="tab-content">
+      <div  class="container tab-pane active" id="general"><br>
+          {{ macro.display(pitches) }}
+      </div>
+      <div  class="container tab-pane fade" id="leadership"><br>
+          {{ macro.display(leadership)}}
+      </div>
+      <div  class="container tab-pane fade" id="environment"><br>
+          {{ macro.display(environment) }}
+      </div>
+      <div  class="container tab-pane fade" id="business"><br>
+          {{ macro.display(business) }}
+      </div>
     </div>
-    </div>
-    <div class="col-md-4"></div>
-    <div class="col-md-2"></div>
+
+  </div>
+
+  <div class="col-md-2"></div>
 </div>
+
 
 {% endblock %}

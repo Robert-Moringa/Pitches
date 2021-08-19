@@ -5,21 +5,27 @@
 					{% for category in source %}
 					<div class="col-md-4" >
 						<div class="thumbnail" id="carded">
-							<h5 class="card-header">{{category.title}}</h5>
+							<h4 class="card-header text-center picth-title" >{{category.title}}</h4>
+                            <p class="pitch-category text-center"><i>Category: <strong> {{category.category}} </strong></i></p>
+                            <hr>
 							<div class="card-body">
-                                <p>{{category.post}}</p>
-                                <p class="text-center"> Category: {{category.category}}</p>
+                                <p class="pitch-post text-center">'{{category.post}}'</p>
                                 <footer class="blockquote-footer text-center" > Posted by: {{category.user.username}}</footer>
 							</div>
 
                             <div>
-                                <span class="foot" >{{category.comment.count()}} Comments</span> 
-                                <span class="foot" > <a href="{{url_for('main.upvote',id = category.id)}}"><i class="fa fa-thumbs-up" style="font-size:18px;color: green"></i></a> {{category.upvote.count()}}</span>
-                                <span class="foot"> <a href="{{url_for('main.downvote',id = category.id)}}"> <i class="fa fa-thumbs-down" style="color:red;"></i> {{category.downvote.count()}}</a></span>
+                                <div class="pitch-comments">
+                                    <span class="foot" >{{category.comment.count()}} Comments</span> 
+                                </div>
+                                
+                                <div class="votes">
+                                    <span class="foot" > <a href="{{url_for('main.upvote',id = category.id)}}"><i class="fa fa-thumbs-up" style="font-size:18px;color: green"></i></a> {{category.upvote.count()}}</span>
+                                    <span class="foot"> <a href="{{url_for('main.downvote',id = category.id)}}"> <i class="fa fa-thumbs-down" style="color:red;"></i> {{category.downvote.count()}}</a></span>
+                                </div>
                             </div>
 
                             <div>
-                                <a href="{{url_for('main.add_comment',pitch_id = category.id)}}" class="btn btn-info btn-sm"> Add Comment</a>
+                                <a href="{{url_for('main.add_comment',pitch_id = category.id)}}" class="btn btn-info btn-sm mynav"> Add Comment</a>
                             </div>
 						</div>
 					</div>
@@ -36,3 +42,24 @@
 			</div>
 </div>
 {% endmacro %}
+
+<div class="row">
+    <div class="col-md-2" style="display: flex; justify-content: center;">
+        <button class="mynav"><a style="color: white;" href="{{url_for('main.new_pitch')}}">Create a Pitch</a><button>
+    </div>
+    <div class="col-md-4">
+        <h4 class="picth-title">Business Marketing</h4>
+        <p class="pitch-category"><i>Category: <strong>Business</strong></i></p>
+        <hr>
+        <p class="pitch-post">"There’s a better way to grow. Myners Developers offers marketing, sales, service, and operations software that helps your business grow without compromise. Because ‘good for the business’ should also mean ‘good for the customer."</p>
+        <div><span class="foot" > Comments</span> 
+            <span class="foot" > <a href=""><i class="fa fa-thumbs-up" style="font-size:18px;color: green"></i></a> 0 </span>
+            
+            
+            <span class="foot"> <a href=""> <i class="fa fa-thumbs-down" style="color:red;"></i> 1 </a></span></div>
+
+        <a href="" class="btn btn-info mynav"> Comment</a>
+    </div>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-2"></div>
