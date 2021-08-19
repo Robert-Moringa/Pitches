@@ -45,14 +45,15 @@ def add_comment(pitch_id):
         return redirect(url_for('.add_comment', pitch_id = pitch_id))
     return render_template('comment_pitch.html', comment_form =form, pitch = pitch, all_comments=all_comments)
 
-@main.route('/user/<uname>')
-def profile(uname):
-    user = User.query.filter_by(username = uname).first()
-
+@main.route('/user/<name>')
+def profile(name):
+    user = User.query.filter_by(username = name).first()
+    user_id = current_user._get_current_object().id
+    posts = Pitch.query.filter_by(user_id = user_id).all()
     if user is None:
         abort(404)
 
-    return render_template("profile/profile.html", user = user)
+    return render_template("profile/profile.html", user = user,posts=posts)
 
 
 @main.route('/user/<name>/updateprofile', methods = ['POST','GET'])
@@ -64,20 +65,20 @@ def updateprofile(name):
         abort(404)
     if form.validate_on_submit():
         user.bio = form.bio.data
-        user.save_u()
+        user.save_user()
         return redirect(url_for('.profile',name = name))
     return render_template('profile/update.html',form =form)
 
-@main.route('/user/<uname>/update/pic',methods= ['POST'])
+@main.route('/user/<name>/update/pic',methods= ['POST'])
 @login_required
-def update_pic(uname):
-    user = User.query.filter_by(username = uname).first()
+def update_profile_pic(name):
+    user = User.query.filter_by(username = name).first()
     if 'photo' in request.files:
         filename = photos.save(request.files['photo'])
         path = f'photos/{filename}'
         user.profile_pic_path = path
         db.session.commit()
-    return redirect(url_for('main.profile',uname=uname))
+    return redirect(url_for('main.profile',name=name))
 
 
 @main.route('/upvote/<int:id>',methods = ['POST','GET'])
