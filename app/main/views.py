@@ -13,7 +13,7 @@ def index():
     leadership = Pitch.query.filter_by(category = 'Leadership').all()
     environment = Pitch.query.filter_by(category = 'Environmental').all()
     title= 'Welcome to your one stop Pitches Website'
-    return render_template('index.html', title = title)
+    return render_template('index.html', title = title, pitches= pitches, business = business, leadership=leadership, environment=environment)
 
 @main.route('/add_pitch', methods = ['POST','GET'])
 @login_required
