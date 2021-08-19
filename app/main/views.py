@@ -31,7 +31,8 @@ def new_pitch():
     return render_template('add_pitch.html', form = form)
 
 @main.route('/comment/<int:pitch_id>', methods = ['POST','GET'])
-def comment_on(pitch_id):
+@login_required
+def add_comment(pitch_id):
     form = CommentForm()
     pitch = Pitch.query.get(pitch_id)
     all_comments = Comment.query.filter_by(pitch_id = pitch_id).all()
@@ -40,9 +41,9 @@ def comment_on(pitch_id):
         pitch_id = pitch_id
         user_id = current_user._get_current_object().id
         new_comment = Comment(comment = comment,user_id = user_id,pitch_id = pitch_id)
-        new_comment.save_c()
-        return redirect(url_for('.comment', pitch_id = pitch_id))
-    return render_template('comment_pitch.html', form =form, pitch = pitch,all_comments=all_comments)
+        new_comment.add_coment()
+        return redirect(url_for('.add_comment', pitch_id = pitch_id))
+    return render_template('comment_pitch.html', comment_form =form, pitch = pitch, all_comments=all_comments)
 
 @main.route('/user/<uname>')
 def profile(uname):

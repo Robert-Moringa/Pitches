@@ -62,7 +62,7 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable = False)
     pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'),nullable = False)
 
-    def save_c(self):
+    def add_coment(self):
         db.session.add(self)
         db.session.commit()
 
@@ -72,7 +72,6 @@ class Comment(db.Model):
 
         return comments
 
-    
     def __repr__(self):
         return f'comment:{self.comment}'
 
