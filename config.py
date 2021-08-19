@@ -9,8 +9,9 @@ class Config:
 
     #  email configurations
     MAIL_SERVER = 'robmain702@gmail.com'
-    MAIL_PORT = 587
-    MAIL_USE_TLS = True
+    MAIL_PORT = 465
+    MAIL_USE_TLS = False
+    MAIL_USE_SSL = True
     MAIL_USERNAME = 'robmain702@gmail.com'
     MAIL_PASSWORD = 'abcd@1234'
 
