@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for,abort,request
 from . import main
 from .. import db, photos
-from ..models import User,Pitch,Comment,Upvote,Downvote
+from ..models import Downvote_Pitch, Upvote_Pitch, User,Pitch,Comment
 from flask_login import login_required, current_user
 from .form import UpdateProfile,PitchForm,CommentForm
 
@@ -78,3 +78,37 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+
+
+@main.route('/upvote/<int:id>',methods = ['POST','GET'])
+@login_required
+def upvote(id):
+    get_pitches = Upvote_Pitch.get_upvotes(id)
+    valid_string = f'{current_user.id}:{id}'
+    for pitch in get_pitches:
+        to_str = f'{pitch}'
+        print(valid_string+" "+to_str)
+        if valid_string == to_str:
+            return redirect(url_for('main.index',id=id))
+        else:
+            continue
+    new_vote = Upvote_Pitch(user = current_user, pitch_id=id)
+    new_vote.save_upvote()
+    return redirect(url_for('main.index',id=id))
+
+
+@main.route('/downvote/<int:id>',methods = ['POST','GET'])
+@login_required
+def downvote(id):
+    pitch = Downvote_Pitch.get_downvotes(id)
+    valid_string = f'{current_user.id}:{id}'
+    for p in pitch:
+        to_str = f'{p}'
+        print(valid_string+" "+to_str)
+        if valid_string == to_str:
+            return redirect(url_for('main.index',id=id))
+        else:
+            continue
+    new_downvote = Downvote_Pitch(user = current_user, pitch_id=id)
+    new_downvote.save_downvote()
+    return redirect(url_for('main.index',id = id))
