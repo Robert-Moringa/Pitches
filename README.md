@@ -15,8 +15,6 @@ The user will be able to:
 * Receive a welcoming email once I sign up and be able to leave a comment.
 * Submit a pitch in any category.
 
-## Screenshot
-
 
 ## BDD
 | Behaviour | Input | Output |
