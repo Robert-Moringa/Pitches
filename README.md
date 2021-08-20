@@ -17,8 +17,6 @@ The user will be able to:
 
 ## Screenshot
 
-<img src="" width="900px" height="440px">
-
 
 ## BDD
 | Behaviour | Input | Output |

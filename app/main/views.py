@@ -15,6 +15,12 @@ def index():
     title= 'Welcome to your one stop Pitches Website'
     return render_template('index.html', title = title, pitches= pitches, business = business, leadership=leadership, environment=environment)
 
+@main.route('/about')
+def about():
+    tittle = 'About Myners Pitches'
+    return render_template('about.html', tittle = tittle)
+
+
 @main.route('/add_pitch', methods = ['POST','GET'])
 @login_required
 def new_pitch():
